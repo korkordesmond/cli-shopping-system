@@ -37,5 +37,5 @@ A simple, interactive command-line shopping system built in Python. This applica
 ### 1. Clone the repository or download the script
 
 ```bash
-git clone https://github.com/yourusername/cli-shopping-system.git
+git clone https://github.com/korkordesmond/cli-shopping-system
 cd cli-shopping-system
