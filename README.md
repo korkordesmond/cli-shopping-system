@@ -39,3 +39,4 @@ A simple, interactive command-line shopping system built in Python. This applica
 ```bash
 git clone https://github.com/korkordesmond/cli-shopping-system
 cd cli-shopping-system
+python shopping_cart_19.py

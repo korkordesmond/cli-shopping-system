@@ -12,10 +12,11 @@ product_catalog = {
 }
 
 def align_center(string):
-    return f"{string:^70}"
+    return f"{string:^70}" #Center aligns a string
 
 
 def show_available_products():
+    """Outputs products in catalog"""
     print(f"\n{'Id':<6}{'Products':<37}{'Price':<15}{'Quantity Available':<15}")
     for idx, product in product_catalog.items():
         print(f"{str(idx).zfill(4):<6}"
@@ -27,7 +28,7 @@ def show_available_products():
 class Cart:
 
     def __init__(self):
-        """Initialize all variables used in the cart"""
+        """Initialize all variables used in the Cart"""
         self.idx = None
         self.name = ''
         self.price = 0
@@ -91,6 +92,7 @@ class Cart:
 
     @staticmethod
     def generate_unique_filename(base_name):
+        """Generate filename with indexes, if filename already exists.e.g invoice_guest, invoice_guest(1)..."""
         i = 1
         filename = f"{base_name}.txt"
         while os.path.exists(filename):
@@ -105,6 +107,7 @@ class Cart:
             print(align_center('Your cart is empty. Nothing to checkout.'))
             return
 
+        # Invoice Content
         invoice_lines = ["=" * 70, f"{'INVOICE':^70}", f"{'Customer: ' + customer_name:^70}", "=" * 70,
                          f"{'Id':<8}{'Product':<35}{'Quantity':<15}{'Cost':<15}", "-" * 70]
 
@@ -124,9 +127,12 @@ class Cart:
         invoice_lines.append("=" * 70)
         invoice_lines.append("Thank you for shopping with us!")
 
-        base_name = f"invoice_{customer_name.replace(' ', '_').lower()}"
+        # Naming of files
+        os.makedirs("Invoice", exist_ok=True) #Creates Invoice folder if not existing
+        base_name = f"Invoice/invoice_{customer_name.replace(' ', '_').lower()}"
         filename = self.generate_unique_filename(base_name)
 
+        # Saving Invoice content to file
         with open(filename, "w") as f:
             for line in invoice_lines:
                 f.write(line + "\n")
@@ -172,10 +178,10 @@ def remove_item():
 
 
 def start():
-    """Starts the whole program"""
+    """Runs the program"""
 
     count = 0
-    user = input('Enter your name: ') or "Unknown"
+    user = input('Enter your name: ') or "Guest" #Initialize name as guest if nothing is typed
     while True:
         if count == 0:
             print(f"Welcome {user}, which operation do you want to perform")
