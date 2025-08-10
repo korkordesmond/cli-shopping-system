@@ -35,6 +35,8 @@ A simple, interactive command-line shopping system built in Python. This applica
 ## 🖥️ Usage
 
 ### 1. Clone the repository or download the script
+- You can simply download the script or
+- You can open Command Prompt or any terminal of your choice at the location you want to clone the repo and type the following commands:
 
 ```bash
 git clone https://github.com/korkordesmond/cli-shopping-system
